@@ -2,19 +2,20 @@ import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SplashScreen from "./screens/SplashScreen";
 import SignIn from "./screens/SignIn";
+import GetStarted from "./components/GetStarted";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       {/* <SplashScreen /> */}
-      <SignIn />
-    </SafeAreaView>
+      {/* <SignIn /> */}
+      <GetStarted />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    backgroundColor: "#fff",
+    flex: 1,
   },
 });
