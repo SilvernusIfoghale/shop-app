@@ -3,8 +3,15 @@ import React from "react";
 import { SearchIcon, ToggleIcon, WaveIcon } from "../assets/Icons";
 import { s, vs } from "react-native-size-matters";
 import TopCategories from "./TopCategories";
+import { useRoute, RouteProp } from "@react-navigation/native";
+
+type RootStackParamList = {
+  TopPage: { name?: string };
+};
 
 const TopPage = () => {
+  const { params } = useRoute<RouteProp<RootStackParamList, "TopPage">>();
+
   const offers = [
     {
       id: 1,
@@ -38,10 +45,13 @@ const TopPage = () => {
       </View>
       {/* Top Section Text  */}
       <View style={{ paddingStart: s(15), gap: 10, paddingBottom: s(20) }}>
-        <Text style={{ fontSize: 20, fontWeight: 600 }}>
-          Hello Fola <WaveIcon />
-        </Text>
-        <Text style={{ color: "#666666", fontSize: 12, fontWeight: 600 }}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Text style={{ fontSize: 20, fontWeight: "600" }}>
+            Hello {params?.name}
+          </Text>
+          <WaveIcon />
+        </View>
+        <Text style={{ color: "#666666", fontSize: 12, fontWeight: "600" }}>
           Let’s start shopping!
         </Text>
       </View>
@@ -65,7 +75,7 @@ const TopPage = () => {
             >
               <Text
                 style={[
-                  { fontSize: s(12), fontWeight: 600 },
+                  { fontSize: s(12), fontWeight: "600" },
                   { color: item.btnColor },
                 ]}
               >
@@ -108,7 +118,7 @@ const styles = StyleSheet.create({
   },
   offerText: {
     fontSize: s(16),
-    fontWeight: 700,
+    fontWeight: "700",
     lineHeight: s(23),
   },
   btn: {

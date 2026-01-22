@@ -2,6 +2,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Items from "../components/Items";
+import { useRoute } from "@react-navigation/native";
 
 const ShopScreen = () => {
   return (

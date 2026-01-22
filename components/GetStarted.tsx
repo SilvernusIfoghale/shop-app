@@ -9,11 +9,17 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import Button from "./Button";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
+
+type RootStackParamList = {
+  SignIn: undefined;
+};
 
 const PHONE_WIDTH = Dimensions.get("window").width;
 const PHONE_HEIGHT = Dimensions.get("window").height;
 
 const GetStarted = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
@@ -30,7 +36,7 @@ const GetStarted = () => {
           <Text
             style={{
               fontSize: 33,
-              fontWeight: 600,
+              fontWeight: "600",
               color: "#ffffff",
               textAlign: "center",
             }}
@@ -48,7 +54,11 @@ const GetStarted = () => {
             Find it here, buy it now!
           </Text>
           <View>
-            <Button text="Get Started" size={23} />
+            <Button
+              text="Get Started"
+              size={23}
+              handlePress={() => navigation.navigate("SignIn")}
+            />
           </View>
         </View>
       </LinearGradient>

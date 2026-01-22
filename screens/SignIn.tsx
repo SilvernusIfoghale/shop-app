@@ -5,15 +5,20 @@ import Input from "../components/Input";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-
 import Button from "../components/Button";
 import { AppleIcon, FacebookIcon, GoogleIcon } from "../assets/Icons";
 import Socials from "../components/Socials";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+
+interface RootStackParamList {
+  ShopScreen: { name: string };
+}
 
 const SignIn = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordShow, setPasswordShow] = useState(false);
+  const [passwordShow, setPasswordShow] = useState(true);
 
   const socialsData = [<GoogleIcon />, <AppleIcon />, <FacebookIcon />];
 
@@ -57,7 +62,13 @@ const SignIn = () => {
         <Text style={styles.forgotText}>Forgot Password?</Text>
       </View>
       <View>
-        <Button text="Login" size={20} />
+        <Button
+          text="Login"
+          size={20}
+          handlePress={() => {
+            navigation.navigate("ShopScreen", { name: user });
+          }}
+        />
       </View>
 
       <View style={{ marginTop: vs(75) }}>

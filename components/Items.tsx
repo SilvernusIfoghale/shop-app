@@ -8,7 +8,6 @@ import {
   SamsungWatch,
   TechnoWatch,
 } from "../assets/Icons";
-import TopCategories from "./TopCategories";
 import TopPage from "./TopPage";
 
 const Header = () => (

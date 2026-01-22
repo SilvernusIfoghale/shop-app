@@ -5,11 +5,12 @@ import { s, vs } from "react-native-size-matters";
 interface ButtonProps {
   text: string;
   size: number;
+  handlePress: () => void;
 }
 
 const PHONE_wIDTH = Dimensions.get("window").width;
 
-const Button: React.FC<ButtonProps> = ({ text, size }) => {
+const Button: React.FC<ButtonProps> = ({ text, size, handlePress }) => {
   const styles = StyleSheet.create({
     button: {
       height: vs(45),
@@ -27,7 +28,7 @@ const Button: React.FC<ButtonProps> = ({ text, size }) => {
   });
 
   return (
-    <Pressable style={styles.button}>
+    <Pressable style={styles.button} onPress={handlePress}>
       <Text style={styles.textStyle}>{text}</Text>
     </Pressable>
   );

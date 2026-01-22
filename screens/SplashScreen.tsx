@@ -1,11 +1,21 @@
 import { Dimensions, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { SplashLogo } from "../assets/Icons";
-import { vs } from "react-native-size-matters";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 const PHONE_HEIGHT = Dimensions.get("window").height;
 
+type RootStackParamList = {
+  GetStarted: undefined;
+};
+
 const SplashScreen = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      navigation.navigate("GetStarted");
+    }, 4000);
+  }, [navigation]);
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
